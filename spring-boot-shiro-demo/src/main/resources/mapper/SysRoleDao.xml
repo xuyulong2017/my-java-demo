@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sh.demo.core.dao.SysRoleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sh.demo.core.entity.SysRoleEntity" id="sysRoleMap">
+        <result property="roleId" column="role_id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="remark" column="remark"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
+    <!-- 查询用户角色集合 -->
+    <select id="selectSysRoleByUserId"  parameterType="long" resultType="com.sh.demo.core.entity.SysRoleEntity" >
+        SELECT sr.* FROM sys_role sr
+        LEFT JOIN sys_user_role se ON sr.role_id=se.role_id
+        WHERE se.user_id = #{userId}
+    </select>
+
+</mapper>
