@@ -41,6 +41,7 @@ public class UserLoginController {
             //验证身份和登陆
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(sysUserEntity.getUsername(), sysUserEntity.getPassword());
+            //验证成功进行登录操作
             subject.login(token);
         }catch (IncorrectCredentialsException e) {
             map.put("code",500);

@@ -4,7 +4,7 @@
 SpringBoot整合Shiro示例实现动态权限加载更新+Session共享+单点登录(数据库中测试号的密码进行了加密,密码皆为123456)
 
 
-相关文章请移步到:暂无
+相关文章请移步到:https://juejin.im/post/5d087d605188256de9779e64
 
 MyBatis-Plus版本: 3.1.0
 

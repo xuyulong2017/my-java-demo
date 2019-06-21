@@ -24,7 +24,7 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
     }
     /**
      * 重写方法实现从请求头获取Token便于接口统一
-     * 每次请求进来,Shiro会去找Authorization这个key对应的Value(Token)
+     * 每次请求进来,Shiro会去从请求头找Authorization这个key对应的Value(Token)
      * @Author Sans
      * @CreateTime 2019/6/13 8:47
      */
