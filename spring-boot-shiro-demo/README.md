@@ -1,7 +1,7 @@
 # spring-boot-shiro-demo
 
 #### 项目介绍:
-SpringBoot整合Shiro示例实现动态权限加载更新+Session共享+单点登录
+SpringBoot整合Shiro示例实现动态权限加载更新+Session共享+单点登录(数据库中测试号的密码进行了加密,密码皆为123456)
 
 
 相关文章请移步到:暂无
