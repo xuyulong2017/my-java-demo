@@ -38,42 +38,39 @@ public class JWTAuthenticationTokenFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // 获得TokenHeader
+        // 获取请求头中JWT的Token
         String tokenHeader = request.getHeader(JWTConfig.tokenHeader);
         if (null!=tokenHeader && tokenHeader.startsWith(JWTConfig.tokenPrefix)) {
             try {
-                // 获取请求头中JWT的Token
-                if (!StringUtils.isEmpty(request.getHeader(JWTConfig.tokenHeader))) {
-                    // 截取JWT前缀
-                    String token = request.getHeader(JWTConfig.tokenHeader).replace(JWTConfig.tokenPrefix, "");
-                    // 解析JWT
-                    Claims claims = Jwts.parser()
-                            .setSigningKey(JWTConfig.secret)
-                            .parseClaimsJws(token)
-                            .getBody();
-                    // 获取用户名
-                    String username = claims.getSubject();
-                    String userId=claims.getId();
-                    if(!StringUtils.isEmpty(username)&&!StringUtils.isEmpty(userId)) {
-                        // 获取角色
-                        List<GrantedAuthority> authorities = new ArrayList<>();
-                        String authority = claims.get("authorities").toString();
-                        if(!StringUtils.isEmpty(authority)){
-                            List<Map<String,String>> authorityMap = JSONObject.parseObject(authority, List.class);
-                            for(Map<String,String> role : authorityMap){
-                                if(!StringUtils.isEmpty(role)) {
-                                    authorities.add(new SimpleGrantedAuthority(role.get("authority")));
-                                }
+                // 截取JWT前缀
+                String token = tokenHeader.replace(JWTConfig.tokenPrefix, "");
+                // 解析JWT
+                Claims claims = Jwts.parser()
+                        .setSigningKey(JWTConfig.secret)
+                        .parseClaimsJws(token)
+                        .getBody();
+                // 获取用户名
+                String username = claims.getSubject();
+                String userId=claims.getId();
+                if(!StringUtils.isEmpty(username)&&!StringUtils.isEmpty(userId)) {
+                    // 获取角色
+                    List<GrantedAuthority> authorities = new ArrayList<>();
+                    String authority = claims.get("authorities").toString();
+                    if(!StringUtils.isEmpty(authority)){
+                        List<Map<String,String>> authorityMap = JSONObject.parseObject(authority, List.class);
+                        for(Map<String,String> role : authorityMap){
+                            if(!StringUtils.isEmpty(role)) {
+                                authorities.add(new SimpleGrantedAuthority(role.get("authority")));
                             }
                         }
-                        //组装参数
-                        SelfUserEntity selfUserEntity = new SelfUserEntity();
-                        selfUserEntity.setUsername(claims.getSubject());
-                        selfUserEntity.setUserId(Long.parseLong(claims.getId()));
-                        selfUserEntity.setAuthorities(authorities);
-                        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(selfUserEntity, userId, authorities);
-                        SecurityContextHolder.getContext().setAuthentication(authentication);
                     }
+                    //组装参数
+                    SelfUserEntity selfUserEntity = new SelfUserEntity();
+                    selfUserEntity.setUsername(claims.getSubject());
+                    selfUserEntity.setUserId(Long.parseLong(claims.getId()));
+                    selfUserEntity.setAuthorities(authorities);
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(selfUserEntity, userId, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (ExpiredJwtException e){
                 log.info("Token过期");
