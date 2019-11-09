@@ -79,6 +79,7 @@ public class ShiroUtils {
             }
             if (Objects.equals(sysUserEntity.getUsername(), username)) {
                 session=sessionInfo;
+                break;
             }
         }
         if (session == null||attribute == null) {

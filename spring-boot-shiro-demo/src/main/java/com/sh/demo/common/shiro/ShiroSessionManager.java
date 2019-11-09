@@ -38,8 +38,10 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_IS_VALID, Boolean.TRUE);
             return token;
         } else {
-            //否则按默认规则从cookie取token
-            return super.getSessionId(request, response);
+            // 这里禁用掉Cookie获取方式
+            // 按默认规则从Cookie取Token
+            // return super.getSessionId(request, response);
+            return null;
         }
     }
 }
