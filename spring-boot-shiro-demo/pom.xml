@@ -66,7 +66,7 @@
             <artifactId>shiro-redis</artifactId>
             <version>3.1.0</version>
         </dependency>
-        <!-- StringUitlS工具 -->
+        <!-- StringUtilS工具 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
