@@ -20,7 +20,7 @@ jwt:
   # 过期时间 单位秒 1天后过期=86400 7天后过期=604800
   expiration: 86400
   # 配置不需要认证的接口
-  antMatchers: /index,/login/**,/favicon.ico
+  antMatchers: /index/**,/login/**,/favicon.ico
 # Mybatis-plus相关配置
 mybatis-plus:
   # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
