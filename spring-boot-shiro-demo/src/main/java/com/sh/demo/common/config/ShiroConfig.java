@@ -29,7 +29,6 @@ public class ShiroConfig {
 
     private final String CACHE_KEY = "shiro:cache:";
     private final String SESSION_KEY = "shiro:session:";
-    private final int EXPIRE = 1800;
 
     //Redis配置
     @Value("${spring.redis.host}")
@@ -175,7 +174,7 @@ public class ShiroConfig {
         redisSessionDAO.setRedisManager(redisManager());
         redisSessionDAO.setSessionIdGenerator(sessionIdGenerator());
         redisSessionDAO.setKeyPrefix(SESSION_KEY);
-        redisSessionDAO.setExpire(EXPIRE);
+        redisSessionDAO.setExpire(timeout);
         return redisSessionDAO;
     }
 
