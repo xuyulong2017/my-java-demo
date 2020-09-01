@@ -21,3 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.idea/misc.xml
+.idea/
+spring-boot-dubbo-demo/spring-boot-dubbo-base/.mvn/wrapper/maven-wrapper.jar
+spring-boot-dubbo-demo/spring-boot-dubbo-base/.mvn/
+spring-boot-dubbo-demo/spring-boot-dubbo-consumer/.mvn/
+spring-boot-dubbo-demo/spring-boot-dubbo-provider/.mvn/
+spring-boot-dubbo-demo/spring-boot-dubbo-base/.gitignore
+spring-boot-dubbo-demo/spring-boot-dubbo-consumer/.gitignore
+spring-boot-dubbo-demo/spring-boot-dubbo-provider/.gitignore
