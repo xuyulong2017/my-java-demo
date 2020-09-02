@@ -22,6 +22,16 @@ CREATE TABLE `user_info` (
   `fraction` bigint(11) DEFAULT NULL COMMENT '分数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='学生信息表';
+CREATE TABLE `dept_info` (
+  `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门ID',
+  `dept_name` varchar(64) NOT NULL COMMENT '部门名称',
+  `create_id` varchar(20) DEFAULT NULL COMMENT '创建者ID',
+  `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
+  `update_id` varchar(20) DEFAULT NULL COMMENT '更新者ID',
+  `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+  `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除 0:正常 1:删除',
+  PRIMARY KEY (`dept_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 ``` 
 
 
