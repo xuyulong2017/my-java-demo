@@ -30,3 +30,8 @@ spring-boot-dubbo-demo/spring-boot-dubbo-provider/.mvn/
 spring-boot-dubbo-demo/spring-boot-dubbo-base/.gitignore
 spring-boot-dubbo-demo/spring-boot-dubbo-consumer/.gitignore
 spring-boot-dubbo-demo/spring-boot-dubbo-provider/.gitignore
+spring-boot-security-demo/target/
+spring-boot-security-demo/spring-boot-security-demo.iml
+spring-boot-shiro-demo/spring-boot-shiro-demo.iml
+spring-boot-shiro-demo/target/classes/application.yml
+spring-boot-shiro-demo/target/classes/
